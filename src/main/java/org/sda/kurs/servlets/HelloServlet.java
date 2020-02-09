@@ -1,5 +1,7 @@
 package org.sda.kurs.servlets;
 
+import org.sda.kurs.util.JspUtil;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -43,6 +45,6 @@ public class HelloServlet extends HttpServlet {
         String nameParam = req.getParameter("name");
 
         PrintWriter printWriter = resp.getWriter();
-        printWriter.print("Hello " + nameParam);
+        printWriter.print(JspUtil.upper("Hello " + nameParam));
     }
 }
