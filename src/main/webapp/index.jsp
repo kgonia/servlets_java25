@@ -1,15 +1,37 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <%@ include file="common/header.jsp" %>
 </head>
 <body>
-<h2>Hello World!</h2>
+
+<c:set var="theLocale" value="${not empty param.locale ? param.locale : 'pl_PL'}" scope="session" />
+
+<fmt:setLocale value="${theLocale}" />
+
+<fmt:setBundle basename="translations"/>
+
+<h2>
+    <fmt:message key="greetings" />
+</h2>
+
+<a href="index.jsp?locale=pl_PL">
+    <button>
+        Polski
+    </button>
+</a>
+<a href="index.jsp?locale=en_US">
+    <button>
+        Angielski
+    </button>
+</a>
 
 <div class="container">
     <!-- Content here -->
 
     <div class="alert alert-primary" role="alert">
-        A simple primary alert—check it out! łłłł
+        <fmt:message key="alert" />
     </div>
 
     <form>
